@@ -3,12 +3,9 @@
 <head>
     <meta charset="utf-8">
     <title>HomePage</title>
-    <link type="text/css" rel="stylesheet" href="">
 </head>
 <body>
+<h1>Error page</h1>
 
-<h1>${user.name}</h1>
-
-<script rel="../static/js/index.js" ></script>
 </body>
 </html>
