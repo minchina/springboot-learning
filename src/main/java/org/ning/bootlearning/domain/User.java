@@ -18,6 +18,8 @@ public class User {
 
     private int age;
 
+    private String mailAddress;
+
     public User() {
     }
 
@@ -48,5 +50,13 @@ public class User {
 
     public void setAge(int age) {
         this.age = age;
+    }
+
+    public String getMailAddress() {
+        return mailAddress;
+    }
+
+    public void setMailAddress(String mailAddress) {
+        this.mailAddress = mailAddress;
     }
 }
