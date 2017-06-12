@@ -37,6 +37,7 @@ public class BoogLearningApplicationTests {
 		Person person = new Person();
 		person.setName("test111");
 		person.setAge(11);
+		personService.save(person);
 
 		Person foundPerson = personService.findById(person.getId());
 		assertThat(foundPerson.getName(), is("test111"));
