@@ -1,4 +1,4 @@
-package org.ncmao;
+package org.ncmao.service;
 
 
 import org.ncmao.domain.Person;
