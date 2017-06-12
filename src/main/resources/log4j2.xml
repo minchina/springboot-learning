@@ -13,6 +13,6 @@
             <AppenderRef ref="Console" />
             <AppenderRef ref="MyFile"/>
         </Root>
-        <Logger name="org.ncmao.mapper.PersonMapper" level="DEBUG" />
+        <Logger name="org.ncmao.mapper.PersonMapper" level="TRACE" />
     </Loggers>
 </Configuration>
