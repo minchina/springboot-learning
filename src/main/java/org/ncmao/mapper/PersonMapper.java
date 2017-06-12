@@ -4,8 +4,12 @@ package org.ncmao.mapper;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 import org.ncmao.domain.Person;
+import org.springframework.stereotype.Component;
+
+import java.util.List;
 
 @Mapper
+@Component
 public interface PersonMapper {
 
 
@@ -16,5 +20,6 @@ public interface PersonMapper {
 
     void deleteAll();
 
+    List<Person> selectByAge(@Param("age") int age);
 
 }

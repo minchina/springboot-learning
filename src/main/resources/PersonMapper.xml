@@ -14,4 +14,8 @@
     <delete id="deleteAll" >
         DELETE from person
     </delete>
+
+    <select id="selectByAge" parameterType="int" resultType="Person" >
+        SELECT id, name, age from person where age=#{age}
+    </select>
 </mapper>
