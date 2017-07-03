@@ -35,24 +35,6 @@ public class RabbitMQConfig {
 
     @Value("${spring.rabbitmq.publisher-confirms}")
     private boolean publisherConfirms;
-//
-//    @Bean
-//    public ConnectionFactory connectionFactory(){
-//        CachingConnectionFactory cachingConnectionFactory = new CachingConnectionFactory();
-//        cachingConnectionFactory.setHost(host);
-//        cachingConnectionFactory.setPort(port);
-//        cachingConnectionFactory.setUsername(username);
-//        cachingConnectionFactory.setPassword(password);
-//        cachingConnectionFactory.setVirtualHost(virtualHost);
-//        cachingConnectionFactory.setPublisherConfirms(publisherConfirms);
-//        return cachingConnectionFactory;
-//    }
-//
-//    @Bean
-//    public RabbitTemplate rabbitTemplate(){
-//        return new RabbitTemplate(connectionFactory());
-//    }
-
     @Bean
     Queue queue(){
         return new Queue(FOO_QUEUE);

@@ -1,6 +1,7 @@
 package org.ncmao.controller;
 
 
+import org.ncmao.domain.Person;
 import org.ncmao.service.SmsService;
 import org.springframework.amqp.rabbit.annotation.RabbitListener;
 import org.springframework.amqp.rabbit.core.RabbitTemplate;
@@ -10,6 +11,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import static org.ncmao.config.RabbitMQConfig.FOO_QUEUE;
@@ -25,6 +27,7 @@ public class SendSmsController {
     private RabbitTemplate rabbitTemplate;
 
     @RequestMapping(value = "/send/{phoneNumber}", method = RequestMethod.GET)
+    @ResponseBody
     public void sendSms(@PathVariable String phoneNumber){
         smsService.validate(phoneNumber);
 
@@ -32,11 +35,14 @@ public class SendSmsController {
 
     @GetMapping("/send/product")
     public void sendProductOrder(){
-        rabbitTemplate.convertAndSend(FOO_QUEUE, "nothing");
+        Person person = new Person();
+        person.setName("message");
+        person.setAge(10);
+        rabbitTemplate.convertAndSend(FOO_QUEUE, person);
     }
 
     @RabbitListener(queues = FOO_QUEUE)
-    public void mqListener(@Payload String sms) {
+    public void mqListener(@Payload Person sms) {
         System.out.println(sms);
     }
 
