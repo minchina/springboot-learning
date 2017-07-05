@@ -35,6 +35,7 @@ public class RabbitMQConfig {
 
     @Value("${spring.rabbitmq.publisher-confirms}")
     private boolean publisherConfirms;
+
     @Bean
     Queue queue(){
         return new Queue(FOO_QUEUE);

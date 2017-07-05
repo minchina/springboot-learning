@@ -4,9 +4,6 @@ spring:
     username: root
     password: minchina91
     driver-class-name: com.mysql.jdbc.Driver
-  thymeleaf:
-    prefix: classpath:/templates/
-    suffix: .html
   rabbitmq:
     host: localhost
     port: 5672
@@ -19,3 +16,10 @@ server:
   port: 8888
 mybatis:
   config-location: classpath:mybatis-config.xml
+github:
+  token:
+    url: https://github.com/login/oauth/access_token
+  userInfo:
+    url: https://api.github.com/user?access_token=
+  client_id: 2ba17e439c0a95084861
+  client_secrect: 92b9a120df1765117e03c396b06a03f0ef208505
