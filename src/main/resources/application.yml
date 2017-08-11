@@ -11,7 +11,14 @@ spring:
     password: guest
     virtual-host: /
     publisher-confirms: true
-
+  data:
+    elasticsearch:
+      cluster-nodes: 127.0.0.1:9300
+      local: false
+      properties:
+        transport:
+          tcp:
+            connect_timeout: 60s
 server:
   port: 8888
 mybatis:
