@@ -19,6 +19,9 @@ spring:
         transport:
           tcp:
             connect_timeout: 60s
+  jpa:
+    generate-ddl: true
+
 server:
   port: 8888
 mybatis:
