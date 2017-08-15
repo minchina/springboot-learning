@@ -4,7 +4,7 @@ package org.ncmao.config;
 import org.elasticsearch.client.transport.TransportClient;
 import org.elasticsearch.common.settings.Settings;
 import org.elasticsearch.common.transport.InetSocketTransportAddress;
-import org.elasticsearch.transport.client.PreBuiltTransportClient;
+import org.elasticsearch.xpack.client.PreBuiltXPackTransportClient;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.DisposableBean;
@@ -25,7 +25,7 @@ public class ElasticsearchConfiguration implements FactoryBean<TransportClient>,
     private String clusterNodes;
 
     private TransportClient transportClient;
-    private PreBuiltTransportClient preBuiltTransportClient;
+    private PreBuiltXPackTransportClient preBuiltXPackTransportClient;
 
 
     @Override
@@ -62,11 +62,11 @@ public class ElasticsearchConfiguration implements FactoryBean<TransportClient>,
 
     protected void buildClient() {
         try {
-            preBuiltTransportClient = new PreBuiltTransportClient(settings());
+            preBuiltXPackTransportClient = new PreBuiltXPackTransportClient(settings());
             String InetSocket[] = clusterNodes.split(":");
             String address = InetSocket[0];
             Integer port = Integer.valueOf(InetSocket[1]);
-            transportClient = preBuiltTransportClient.addTransportAddress(new InetSocketTransportAddress(InetAddress.getByName(address), port));
+            transportClient = preBuiltXPackTransportClient.addTransportAddress(new InetSocketTransportAddress(InetAddress.getByName(address), port));
 
         } catch (UnknownHostException e) {
             logger.error(e.getMessage());
@@ -74,6 +74,8 @@ public class ElasticsearchConfiguration implements FactoryBean<TransportClient>,
     }
 
     private Settings settings() {
-        return Settings.builder().put("cluster.name", "sisyphe-es").build();
+        return Settings.builder().put("cluster.name", "coffee-log")
+                .put("xpack.security.user", "elastic:changeme")
+                .build();
     }
 }
