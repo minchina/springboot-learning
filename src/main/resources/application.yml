@@ -19,7 +19,13 @@ spring:
         transport:
           tcp:
             connect_timeout: 60s
+    jpa:
+      repositories:
+        enabled: true
   jpa:
+    show-sql: true
+    hibernate:
+      ddl-auto: create-drop
     generate-ddl: true
 
 server:

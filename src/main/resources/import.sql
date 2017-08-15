@@ -1,0 +1,1 @@
+INSERT INTO station (station_code, station_name) VALUES ('CQ', '重庆');
