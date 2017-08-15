@@ -25,7 +25,6 @@ public class ElasticsearchConfiguration implements FactoryBean<TransportClient>,
     private String clusterNodes;
 
     private TransportClient transportClient;
-    private PreBuiltXPackTransportClient preBuiltXPackTransportClient;
 
 
     @Override
@@ -62,11 +61,10 @@ public class ElasticsearchConfiguration implements FactoryBean<TransportClient>,
 
     protected void buildClient() {
         try {
-            preBuiltXPackTransportClient = new PreBuiltXPackTransportClient(settings());
             String InetSocket[] = clusterNodes.split(":");
             String address = InetSocket[0];
             Integer port = Integer.valueOf(InetSocket[1]);
-            transportClient = preBuiltXPackTransportClient.addTransportAddress(new InetSocketTransportAddress(InetAddress.getByName(address), port));
+            transportClient = new PreBuiltXPackTransportClient(settings()).addTransportAddress(new InetSocketTransportAddress(InetAddress.getByName(address), port));
 
         } catch (UnknownHostException e) {
             logger.error(e.getMessage());
