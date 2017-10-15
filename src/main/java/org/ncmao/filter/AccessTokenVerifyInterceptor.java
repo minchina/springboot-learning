@@ -1,8 +1,6 @@
 package org.ncmao.filter;
 
 import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Component;
 import org.springframework.util.StringUtils;
@@ -15,9 +13,6 @@ import javax.servlet.http.HttpServletResponse;
 public class AccessTokenVerifyInterceptor extends HandlerInterceptorAdapter {
     private final static org.slf4j.Logger LOG = LoggerFactory.getLogger(AccessTokenVerifyInterceptor.class);
 
-
-    @Autowired
-    private RedisTemplate redisTemplate;
 
     @Override
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
