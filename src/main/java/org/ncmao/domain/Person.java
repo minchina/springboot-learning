@@ -33,3 +33,15 @@ public class Person implements Serializable {
         this.age = age;
     }
 }
+
+/**
+ * @Id
+ * @Column(length = 30)
+ * private String cityCode;
+ * @Column(length = 30, nullable = false, unique = true)
+ * private String cityName;
+ * @ManyToOne(fetch = FetchType.EAGER, optional = false)
+ * @JoinColumn(name = "large_area_code")
+ * private LargeArea largeArea;
+ */
+
