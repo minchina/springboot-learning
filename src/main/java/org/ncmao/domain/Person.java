@@ -16,7 +16,7 @@ import java.io.Serializable;
 public class Person implements Serializable {
 
     @Id
-    @Column(name = "trade_id")
+    @Column(name = "id")
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
