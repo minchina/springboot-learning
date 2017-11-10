@@ -41,8 +41,6 @@ public class SingletonTest {
         }
         LogstashMarker logstashMarker = appendFields(student);
         LOGGER.info(logstashMarker, "test");
-
-
     }
 
 
