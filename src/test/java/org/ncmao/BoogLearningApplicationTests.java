@@ -24,14 +24,15 @@ public class BoogLearningApplicationTests {
 
     @Test
     public void shouldSavePerson() {
-        personRepository.deleteAll();
+        Person person = new Person();
+        person.setName("test");
+        person.setAge(10);
+        personRepository.save(person);
     }
 
     @Test
     public void shouldFindPerson() {
-
-        personRepository.findByName("test2");
-        personRepository.findByName("test2");
-        personRepository.findByName("test2");
+        Person selectedPerson = personRepository.findByName("test");
+        System.out.println(selectedPerson.toString());
     }
 }

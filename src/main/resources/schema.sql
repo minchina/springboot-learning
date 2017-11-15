@@ -1,0 +1,1 @@
+create table IF NOT EXISTS person(id bigint not null auto_increment, age integer, name varchar(255), primary key (id))

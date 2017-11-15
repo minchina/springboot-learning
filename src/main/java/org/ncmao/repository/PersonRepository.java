@@ -1,6 +1,7 @@
 package org.ncmao.repository;
 
 
+import com.sun.istack.internal.Nullable;
 import org.ncmao.domain.Person;
 import org.springframework.cache.annotation.CacheConfig;
 import org.springframework.cache.annotation.CachePut;
@@ -15,8 +16,9 @@ import org.springframework.data.jpa.repository.JpaRepository;
 public interface PersonRepository extends JpaRepository<Person, Long> {
 
 
+    @Nullable
     @Cacheable(key = "#p0")
-    Person findByName(String name);
+    Person findByName(@Nullable String name);
 
 
     @CachePut(key = "#p0.name")
