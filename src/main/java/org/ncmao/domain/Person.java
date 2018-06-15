@@ -4,9 +4,12 @@ import org.ncmao.domain.enums.Gender;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.persistence.Transient;
 import java.io.Serializable;
@@ -26,6 +29,10 @@ public class Person implements Serializable {
     private String name;
 
     private Integer age;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "clazzId", referencedColumnName = "id")
+    private Clazz clazz;
 
     @Transient
     private Gender gender;
@@ -60,6 +67,15 @@ public class Person implements Serializable {
 
     public void setGender(Gender gender) {
         this.gender = gender;
+    }
+
+
+    public Clazz getClazz() {
+        return clazz;
+    }
+
+    public void setClazz(Clazz clazz) {
+        this.clazz = clazz;
     }
 
     @Override
